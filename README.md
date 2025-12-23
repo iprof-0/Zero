@@ -86,7 +86,7 @@ links = {
 > This project is licensed under the MIT License.
 
 # 👤 Author
-###      Eng Mahmoud Elgazar **"zero"**
+###      Prof0 *"zero"*
 
 ## 🛡️ Cybersecurity
 
