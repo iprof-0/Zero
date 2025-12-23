@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
-# generate_qr.py
+
+
 import os
 import qrcode
 from qrcode.constants import ERROR_CORRECT_H
 
-# مكان حفظ الصور
+
 OUT_DIR = "qrcodes"
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# عدل هنا الروابط اللي تحب تولدلها QR
+
 links = {
     "github": "https://github.com/eng-m7moud",
     "linkedin": "https://www.linkedin.com/in/m7moud9i",
