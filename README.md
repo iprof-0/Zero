@@ -206,7 +206,7 @@ This project is open-source and free to use for personal or professional purpose
 
 
 
-Mahmoud Elgazar-"Zero"
+Mahmoud Elgazar - "Zero"
 
 Cybersecurity • Ethical Hacking • Software Engineering
 
