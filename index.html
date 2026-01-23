@@ -58,6 +58,9 @@
           </p>
           <div class="cta-buttons">
             <a href="#projects" class="btn btn-primary">View Projects</a>
+            <button id="open-agent-btn" class="btn btn-agent">
+              <i class="fas fa-robot"></i> Try My Agent
+            </button>    
             <a href="#contact" class="btn btn-secondary">Contact Me</a>
           </div>
         </div>
@@ -143,8 +146,8 @@
               <span>Git/GitHub</span>
               <span>Docker</span>
               <span>Wireshark</span>
+
               <span>Nmap</span>
-              <span>hashcat</span>
 
             </div>
           </div>
@@ -164,7 +167,7 @@
             <div class="project-content">
               <div class="project-header">
                 <i class="fas fa-folder-open folder-icon"></i>
-                <a href="https://github.com/prof-0/ZeroCrypto" target="_blank" class="github-link"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/ENG-M7MOUD/ZeroCrypto" target="_blank" class="github-link"><i class="fab fa-github"></i></a>
               </div>
               <h3 class="project-title">ZeroCrypto</h3>
               <p class="project-desc">
@@ -184,7 +187,7 @@
             <div class="project-content">
               <div class="project-header">
                 <i class="fas fa-folder-open folder-icon"></i>
-                <a href="https://github.com/prof-o/nature-gallery" target="_blank" class="github-link"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/ENG-M7MOUD/nature-gallery" target="_blank" class="github-link"><i class="fab fa-github"></i></a>
               </div>
               <h3 class="project-title">Nature Gallery</h3>
               <p class="project-desc">
@@ -281,13 +284,11 @@
         </p>
 
         <div class="social-links">
-           <a href="mailto:iprof-0.contact@proton.me" target="_blank" class="social-btn" title="Proton"><i class="fas fa-envelope-open-text"></i></a>
-           <a href="mailto:iprof0.contact@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
-           <a href="https://github.com/iprof-0" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
-           <a href="https://www.linkedin.com/in/iprof0" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-           <a href="https://t.me/iProf_0" target="_blank" class="social-btn" title="Telegram"><i class="fab fa-telegram"></i></a>
-           <a href="https://youtube.com/@iprof-0" target="_blank" class="social-btn" title="Youtube"><i class="fab fa-youtube"></i></a>
-           
+           <a href="mailto:elgazar.m7moud@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+           <a href="https://github.com/ENG-M7MOUD" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+           <a href="https://www.linkedin.com/in/m7moud9i" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+           <a href="https://t.me/m7moud9i" target="_blank" class="social-btn" title="Telegram"><i class="fab fa-telegram"></i></a>
+           <a href="https://twitter.com/m7moud9i" target="_blank" class="social-btn" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
         </div>
         
         <!-- Legacy QR Code Section Integration (Optional / Hidden by default or subtle) -->
@@ -309,30 +310,81 @@
 
   <!-- Scripts -->
   <script>
-    // Simple Hamburger Menu Toggle
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('open-agent-btn');
+        const modal = document.getElementById('agent-modal');
+        const close = document.getElementById('close-agent-btn');
+        const iframe = modal.querySelector('iframe'); // عشان نعمل فوكس للشات أول ما يفتح
+
+        // فتح المودال
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // نركز المؤشر جوه الـ iframe عشان زرار Esc يشتغل علطول
+            if(iframe) iframe.focus();
+        });
+
+        // دالة الغلق
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        close.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', e => {
+            if (e.target === modal) closeModal();
+        });
+
+        // === استقبال رسالة الغلق من الـ Iframe ===
+        window.addEventListener('message', (event) => {
+            if (event.data === 'closeModal') {
+                closeModal();
+            }
+        });
+
+        // === زرار ESC للصفحة الرئيسية (لو الفوكس مش جوه الـ iframe) ===
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    });
+
+    // === باقي كود القائمة (Hamburger) زي ما هو ===
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 
-    // Close menu when link is clicked
     document.querySelectorAll('.nav-links li a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
     });
 
-    // Scroll Header Effect
     window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
     });
-  </script>
+</script>
+<div id="agent-modal" class="modal-overlay">
+    <button class="close-modal" id="close-agent-btn">
+        <i class="fas fa-times"></i> Close Session
+    </button>
+    <div class="modal-content">
+        <iframe src="agent.html" title="Zein AI Interface"></iframe>
+    </div>
+</div>
 </body>
 </html>
